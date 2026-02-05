@@ -18,6 +18,7 @@ const navigation = [
   { label: "Tech Stack", href: "#tech" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
@@ -192,7 +193,7 @@ export default function App() {
               <p className="text-sm uppercase tracking-[0.3em] text-accent-blue">About</p>
               <h2 className="mt-4 text-3xl font-semibold">Engineering for scale and intelligence</h2>
             </div>
-             <p className="text-slate-600 leading-relaxed dark:text-slate-300">
+            <p className="text-slate-600 leading-relaxed dark:text-slate-300">
               {profile.summary}
             </p>
           </motion.div>
@@ -345,6 +346,47 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="education" className="mx-auto max-w-6xl px-6 py-20">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-sm uppercase tracking-[0.3em] text-accent-teal">Education</p>
+            <h2 className="mt-4 text-3xl font-semibold">Learning foundations and credentials</h2>
+          </motion.div>
+          <div className="mt-10 space-y-6">
+            {profile.education.map((item, index) => (
+              <motion.div
+                key={`${item.program}-${item.org}`}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="relative rounded-2xl border border-slate-200/70 bg-white p-6 dark:border-white/10 dark:bg-white/5"
+              >
+                <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold">{item.program}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">
+                      {item.org}
+                    </p>
+                  </div>
+                  <span className="text-sm text-slate-500 dark:text-slate-400">
+                    {item.period}
+                  </span>
+                </div>
+                <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                  {item.details}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </section>
 

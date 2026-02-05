@@ -101,4 +101,20 @@ export const profile = {
         "Structured curriculum in data science, ML fundamentals, and NLP with weekly mini-projects.",
     },
   ],
+  education: [
+    {
+      program: "B.Tech in Computer Science & Engineering",
+      org: "State Institute of Technology",
+      period: "2019 - 2023",
+      details:
+        "Focused on systems engineering, distributed computing, and applied machine learning coursework.",
+    },
+    {
+      program: "DevOps & Cloud Engineering Certification",
+      org: "Linux Foundation / Coursera",
+      period: "2023",
+      details:
+        "Covered CI/CD, container orchestration, infrastructure automation, and reliability best practices.",
+    },
+  ],
 };
