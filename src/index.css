@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+.gradient-border {
+  background: linear-gradient(120deg, rgba(45, 212, 191, 0.25), rgba(139, 92, 246, 0.25));
+  padding: 1px;
+  border-radius: 999px;
+}
