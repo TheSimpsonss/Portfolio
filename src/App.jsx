@@ -19,6 +19,7 @@ const navigation = [
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
@@ -387,6 +388,49 @@ export default function App() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </section>
+
+        <section id="certifications" className="bg-slate-100/70 dark:bg-ink/40">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="section-kicker text-accent-blue">Certifications</p>
+              <h2 className="section-title">Credentials that validate expertise</h2>
+            </motion.div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {profile.certifications.map((item, index) => (
+                <motion.div
+                  key={`${item.name}-${item.issuer}`}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="section-card"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-lg font-semibold">{item.name}</h3>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
+                        {item.issuer}
+                      </p>
+                    </div>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">
+                      {item.period}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                    {item.details}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

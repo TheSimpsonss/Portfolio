@@ -117,4 +117,18 @@ export const profile = {
         "Covered CI/CD, container orchestration, infrastructure automation, and reliability best practices.",
     },
   ],
+  certifications: [
+    {
+      name: "AWS Certified Cloud Practitioner",
+      issuer: "Amazon Web Services",
+      period: "2023",
+      details: "Validated foundational cloud concepts, security, and billing models.",
+    },
+    {
+      name: "Kubernetes Fundamentals",
+      issuer: "Linux Foundation",
+      period: "2024",
+      details: "Hands-on pods, deployments, services, and cluster operations.",
+    },
+  ],
 };
