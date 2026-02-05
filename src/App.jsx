@@ -66,19 +66,23 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-charcoal text-slate-100">
-      <header className="sticky top-0 z-50 bg-charcoal/80 backdrop-blur-md border-b border-white/5">
+    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-charcoal dark:text-slate-100">
+      <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-md dark:border-white/5 dark:bg-charcoal/80">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-lg font-semibold">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-200/70 text-lg font-semibold text-slate-700 dark:bg-white/5 dark:text-slate-100">
               {profile.name
                 .split(" ")
                 .map((part) => part[0])
                 .join("")}
             </span>
-            <div>
-              <p className="text-sm font-semibold">{profile.name}</p>
-              <p className="text-xs text-slate-400">DevOps • MLOps • AI</p>
+            <div className="flex flex-col leading-tight">
+              <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
+                {profile.name}
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                DevOps • MLOps • AI
+              </p>
             </div>
           </div>
           <nav className="hidden items-center gap-6 text-sm md:flex">
@@ -86,7 +90,7 @@ export default function App() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-slate-300 transition hover:text-white"
+                className="text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
               >
                 {item.label}
               </a>
@@ -97,14 +101,14 @@ export default function App() {
               type="button"
               aria-label="Toggle dark mode"
               onClick={() => setIsDark((prev) => !prev)}
-              className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 transition hover:border-white/30"
+              className="rounded-full border border-slate-200/80 bg-white p-2 text-slate-700 shadow-sm transition hover:border-slate-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               type="button"
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 transition hover:border-white/30 md:hidden"
+              className="rounded-full border border-slate-200/80 bg-white p-2 text-slate-700 shadow-sm transition hover:border-slate-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30 md:hidden"
               aria-label="Toggle menu"
             >
               {menuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -112,14 +116,14 @@ export default function App() {
           </div>
         </div>
         {menuOpen && (
-          <div className="border-t border-white/5 px-6 pb-4 md:hidden">
+          <div className="border-t border-slate-200/70 px-6 pb-4 dark:border-white/5 md:hidden">
             <nav className="flex flex-col gap-3 pt-3 text-sm">
               {navigation.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-slate-300 transition hover:text-white"
+                  className="text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 >
                   {item.label}
                 </a>
@@ -132,7 +136,7 @@ export default function App() {
       <main>
         <section className="relative overflow-hidden">
           <div className="absolute inset-0 bg-radial-glow opacity-80" />
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-[1.1fr,0.9fr]">
+          <div className="mx-auto max-w-6xl px-6 py-24">
             <motion.div
               variants={fadeUp}
               initial="hidden"
@@ -146,7 +150,9 @@ export default function App() {
               <h1 className="text-4xl font-semibold leading-tight md:text-5xl">
                 {profile.title}
               </h1>
-              <p className="text-lg text-slate-300">{profile.tagline}</p>
+              <p className="text-lg text-slate-600 dark:text-slate-300">
+                {profile.tagline}
+              </p>
               <div className="flex flex-wrap gap-4">
                 <a
                   href="#resume"
@@ -156,46 +162,18 @@ export default function App() {
                 </a>
                 <a
                   href="#projects"
-                  className="rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-white/30"
+                  className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 dark:border-white/10 dark:text-slate-100 dark:hover:border-white/30"
                 >
                   View Projects
                 </a>
               </div>
-              <div className="flex flex-wrap gap-4 text-xs text-slate-400">
-                <span className="rounded-full border border-white/10 px-3 py-1">
+              <div className="flex flex-wrap gap-4 text-xs text-slate-500 dark:text-slate-400">
+                <span className="rounded-full border border-slate-200 px-3 py-1 dark:border-white/10">
                   Open to MLOps + GenAI roles
                 </span>
-                <span className="rounded-full border border-white/10 px-3 py-1">
+                <span className="rounded-full border border-slate-200 px-3 py-1 dark:border-white/10">
                   Remote • Global
                 </span>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft"
-            >
-              <div className="space-y-2">
-                <p className="text-sm text-slate-400">Currently learning</p>
-                <h2 className="text-2xl font-semibold">Data Science & ML Foundations</h2>
-                <p className="text-sm text-slate-300">
-                  Building experimentation workflows, model evaluation, and NLP prototypes
-                  alongside production DevOps practices.
-                </p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-sm text-slate-400">Future direction</p>
-                <h3 className="text-xl font-semibold">GenAI • Agentic AI • MLOps</h3>
-                <p className="text-sm text-slate-300">
-                  Creating intelligent automation that ships with observability, safety, and
-                  reliable deployments.
-                </p>
-              </div>
-              <div className="gradient-border inline-flex items-center gap-2 px-4 py-2 text-xs text-slate-200">
-                <span className="rounded-full bg-charcoal px-3 py-1">Always learning</span>
-                <ArrowUpRight size={14} />
               </div>
             </motion.div>
           </div>
@@ -214,11 +192,13 @@ export default function App() {
               <p className="text-sm uppercase tracking-[0.3em] text-accent-blue">About</p>
               <h2 className="mt-4 text-3xl font-semibold">Engineering for scale and intelligence</h2>
             </div>
-            <p className="text-slate-300 leading-relaxed">{profile.summary}</p>
+             <p className="text-slate-600 leading-relaxed dark:text-slate-300">
+              {profile.summary}
+            </p>
           </motion.div>
         </section>
 
-        <section id="tech" className="bg-ink/40">
+        <section id="tech" className="bg-slate-100/70 dark:bg-ink/40">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <motion.div
               variants={fadeUp}
@@ -239,7 +219,7 @@ export default function App() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5 }}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                  className="rounded-2xl border border-slate-200/70 bg-white p-6 dark:border-white/10 dark:bg-white/5"
                 >
                   <div className="flex items-center justify-between">
                     <h3 className="text-lg font-semibold">{group.label}</h3>
@@ -253,7 +233,7 @@ export default function App() {
                     {group.items.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-200"
+                        className="rounded-full border border-slate-200/70 px-3 py-1 text-xs text-slate-700 dark:border-white/10 dark:text-slate-200"
                       >
                         {item}
                       </span>
@@ -279,7 +259,9 @@ export default function App() {
           <div className="mt-10 space-y-10">
             {profile.projects.map((group) => (
               <div key={group.category} className="space-y-6">
-                <h3 className="text-xl font-semibold text-slate-200">{group.category}</h3>
+                <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200">
+                  {group.category}
+                </h3>
                 <div className="grid gap-6 md:grid-cols-2">
                   {group.items.map((project) => (
                     <motion.a
@@ -292,20 +274,24 @@ export default function App() {
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: 0.5 }}
-                      className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-white/30"
+                      className="group rounded-2xl border border-slate-200/70 bg-white p-6 transition hover:border-slate-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/30"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <h4 className="text-lg font-semibold text-white">{project.name}</h4>
-                          <p className="mt-2 text-sm text-slate-300">{project.description}</p>
+                          <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                            {project.name}
+                          </h4>
+                          <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                            {project.description}
+                          </p>
                         </div>
-                        <ArrowUpRight className="text-slate-500 transition group-hover:text-white" />
+                        <ArrowUpRight className="text-slate-500 transition group-hover:text-slate-900 dark:group-hover:text-white" />
                       </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         {project.stack.map((tech) => (
                           <span
                             key={tech}
-                            className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-200"
+                            className="rounded-full border border-slate-200/70 px-3 py-1 text-xs text-slate-700 dark:border-white/10 dark:text-slate-200"
                           >
                             {tech}
                           </span>
@@ -319,7 +305,7 @@ export default function App() {
           </div>
         </section>
 
-        <section id="experience" className="bg-ink/40">
+        <section id="experience" className="bg-slate-100/70 dark:bg-ink/40">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <motion.div
               variants={fadeUp}
@@ -340,16 +326,22 @@ export default function App() {
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="relative rounded-2xl border border-white/10 bg-white/5 p-6"
+                  className="relative rounded-2xl border border-slate-200/70 bg-white p-6 dark:border-white/10 dark:bg-white/5"
                 >
                   <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                     <div>
                       <h3 className="text-lg font-semibold">{role.role}</h3>
-                      <p className="text-sm text-slate-300">{role.org}</p>
+                      <p className="text-sm text-slate-600 dark:text-slate-300">
+                        {role.org}
+                      </p>
                     </div>
-                    <span className="text-sm text-slate-400">{role.period}</span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">
+                      {role.period}
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm text-slate-300">{role.details}</p>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
+                    {role.details}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -378,17 +370,21 @@ export default function App() {
             <button
               type="button"
               onClick={() => setResumeOpen(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-white/30"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 dark:border-white/10 dark:text-slate-100 dark:hover:border-white/30"
             >
               Preview Resume
             </button>
-            <p className="text-sm text-slate-400">
-              Replace <span className="text-slate-200">public/resume.pdf</span> with your latest resume.
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              Replace{" "}
+              <span className="text-slate-700 dark:text-slate-200">
+                public/resume.pdf
+              </span>{" "}
+              with your latest resume.
             </p>
           </div>
         </section>
 
-        <section id="contact" className="bg-ink/40">
+        <section id="contact" className="bg-slate-100/70 dark:bg-ink/40">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <motion.div
               variants={fadeUp}
@@ -401,7 +397,7 @@ export default function App() {
               <div className="space-y-4">
                 <p className="text-sm uppercase tracking-[0.3em] text-accent-teal">Contact</p>
                 <h2 className="text-3xl font-semibold">Let&apos;s build resilient AI systems</h2>
-                <p className="text-slate-300">
+                <p className="text-slate-600 dark:text-slate-300">
                   Reach out to collaborate on cloud-native, MLOps, or intelligent automation projects.
                 </p>
                 <div className="flex flex-wrap gap-4">
@@ -411,7 +407,7 @@ export default function App() {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-slate-200 transition hover:border-white/30"
+                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 transition hover:border-slate-300 dark:border-white/10 dark:text-slate-200 dark:hover:border-white/30"
                     >
                       <link.icon size={16} />
                       {link.label}
@@ -419,30 +415,36 @@ export default function App() {
                   ))}
                 </div>
               </div>
-              <form className="rounded-2xl border border-white/10 bg-white/5 p-6">
+              <form className="rounded-2xl border border-slate-200/70 bg-white p-6 dark:border-white/10 dark:bg-white/5">
                 <div className="grid gap-4">
                   <div>
-                    <label className="text-xs uppercase text-slate-400">Name</label>
+                    <label className="text-xs uppercase text-slate-500 dark:text-slate-400">
+                      Name
+                    </label>
                     <input
                       type="text"
                       placeholder="Your name"
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-accent-teal focus:outline-none"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-teal focus:outline-none dark:border-white/10 dark:bg-charcoal dark:text-slate-100 dark:placeholder:text-slate-500"
                     />
                   </div>
                   <div>
-                    <label className="text-xs uppercase text-slate-400">Email</label>
+                    <label className="text-xs uppercase text-slate-500 dark:text-slate-400">
+                      Email
+                    </label>
                     <input
                       type="email"
                       placeholder="you@email.com"
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-accent-teal focus:outline-none"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-teal focus:outline-none dark:border-white/10 dark:bg-charcoal dark:text-slate-100 dark:placeholder:text-slate-500"
                     />
                   </div>
                   <div>
-                    <label className="text-xs uppercase text-slate-400">Message</label>
+                    <label className="text-xs uppercase text-slate-500 dark:text-slate-400">
+                      Message
+                    </label>
                     <textarea
                       rows="4"
                       placeholder="Share what you want to build"
-                      className="mt-2 w-full rounded-xl border border-white/10 bg-charcoal px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:border-accent-teal focus:outline-none"
+                      className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-accent-teal focus:outline-none dark:border-white/10 dark:bg-charcoal dark:text-slate-100 dark:placeholder:text-slate-500"
                     />
                   </div>
                   <button
@@ -458,8 +460,8 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5 py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-400 md:flex-row">
+      <footer className="border-t border-slate-200/70 py-8 dark:border-white/5">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 dark:text-slate-400 md:flex-row">
           <p>© 2024 {profile.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
             {contactLinks.map((link) => (
@@ -468,7 +470,7 @@ export default function App() {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-white"
+                className="transition hover:text-slate-900 dark:hover:text-white"
               >
                 {link.label}
               </a>
@@ -489,22 +491,24 @@ export default function App() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 bg-charcoal"
+              className="relative w-full max-w-3xl overflow-hidden rounded-2xl border border-slate-200/70 bg-white dark:border-white/10 dark:bg-charcoal"
             >
-              <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+              <div className="flex items-center justify-between border-b border-slate-200/70 px-6 py-4 dark:border-white/10">
                 <div>
                   <h3 className="text-lg font-semibold">Resume Preview</h3>
-                  <p className="text-xs text-slate-400">Replace with your latest PDF.</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Replace with your latest PDF.
+                  </p>
                 </div>
                 <button
                   type="button"
                   onClick={() => setResumeOpen(false)}
-                  className="rounded-full border border-white/10 bg-white/5 p-2 text-slate-200 hover:border-white/30"
+                  className="rounded-full border border-slate-200 bg-white p-2 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/30"
                 >
                   <X size={18} />
                 </button>
               </div>
-              <div className="h-[70vh] bg-ink">
+              <div className="h-[70vh] bg-slate-100 dark:bg-ink">
                 <iframe
                   title="Resume preview"
                   src={profile.links.resume}
